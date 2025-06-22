@@ -8,5 +8,6 @@
         "types": ["@cloudflare/workers-types"],
         "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true
-    }
+    },
+    "include": ["src"]
 }

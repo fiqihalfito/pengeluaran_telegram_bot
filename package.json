@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "build": "tsc index.ts --target ES2022 --module ESNext --outDir dist"
+        "build": "tsc"
     },
     "devDependencies": {
         "@cloudflare/workers-types": "^4.20240605.0",
