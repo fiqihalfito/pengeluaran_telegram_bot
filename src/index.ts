@@ -71,9 +71,9 @@ export default {
                 await setState(chatId, state, env);
                 return sendInlineKeyboard(chatId, "📍 Pilih status kegiatan:", [
                     [
-                        { text: "✅ Kewajiban", callback_data: "status:kewajiban" },
-                        { text: "💚 Sedekah", callback_data: "status:sedekah" },
-                        { text: "🌍 Duniawi", callback_data: "status:duniawi" },
+                        { text: "✅ Kewajiban", callback_data: "status:Kewajiban" },
+                        { text: "💚 Sedekah", callback_data: "status:Sedekah" },
+                        { text: "🌍 Duniawi", callback_data: "status:Duniawi" },
                     ]
                 ], env);
             }
