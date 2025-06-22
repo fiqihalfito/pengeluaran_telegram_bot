@@ -67,7 +67,7 @@ export default {
                 });
 
                 const totalbulanini = await hitungTotalPengeluaran(env);
-                return reply(chatId, `💰 Total pengeluaran bulan *${namaBulanTahun}*: Rp${totalbulanini?.toLocaleString("id-ID")}`, env)
+                return reply(chatId, `💰 Total pengeluaran bulan ini *${namaBulanTahun}*: Rp${totalbulanini?.toLocaleString("id-ID")}`, env)
             }
 
             // ============== INPUT DATA ===============================
