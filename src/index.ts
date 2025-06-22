@@ -27,6 +27,7 @@ interface Env {
 export default {
     async fetch(request: Request, env: Env): Promise<Response> {
         const body: TelegramMessage = await request.json();
+        console.log("hitted");
 
         // Callback tombol status
         if (body.callback_query) {
