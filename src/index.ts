@@ -91,15 +91,14 @@ export default {
                     pengeluaran: state.pengeluaran,
                 };
 
-                // const res = await fetch(env.WEB_APP_URL, {
-                //     method: "POST",
-                //     headers: { "Content-Type": "application/json" },
-                //     body: JSON.stringify(payload)
-                // });
+                const res = await fetch(env.WEB_APP_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
 
+                // delete KV data by its key 
                 await env.TELEGRAM_STATE.delete(chatId);
-
-                // return reply(chatId, res.ok ? "✅ Data berhasil disimpan. Terima kasih!" : "❌ Gagal menyimpan data ke Sheet.", env);
 
                 const summary = `
                 ✅ Data berhasil disimpan!
@@ -110,7 +109,10 @@ export default {
                 💰 Pengeluaran: Rp${state.pengeluaran?.toLocaleString("id-ID")}
                 `;
 
-                return reply(chatId, summary, env);
+                return reply(chatId, res.ok ? summary : "❌ Gagal menyimpan data ke Sheet.", env);
+
+
+
             }
         }
 
