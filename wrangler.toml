@@ -13,3 +13,7 @@ TELEGRAM_TOKEN = "7823679916:AAGPLub5GJ0UprX5Zd_eQqytfiqDurlBqmw"
 
 [observability.logs]
 enabled = true
+
+[[kv_namespaces]]
+binding = "TELEGRAM_STATE"
+id = "2e543f2a769a4187bcc1d81d7dc05441"
