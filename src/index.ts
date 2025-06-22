@@ -18,7 +18,7 @@ interface UserState {
     pengeluaran?: number;
 }
 
-declare const TELEGRAM_STATE: KVNamespace;
+export declare const TELEGRAM_STATE: KVNamespace;
 
 const TELEGRAM_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN";
 const WEB_APP_URL = "YOUR_GOOGLE_WEB_APP_URL";
@@ -34,7 +34,7 @@ export default {
             const state = await getState(chatId);
 
             if (data.startsWith("status:")) {
-                state.status = data.split(":"[1]);
+                state.status = data.split(":")[1];
                 state.step = 4;
                 state.tanggal = new Date().toISOString().split("T")[0];
 

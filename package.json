@@ -1,0 +1,12 @@
+{
+    "name": "pengeluaran-sheet-bot",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "build": "tsc index.ts --target ES2022 --module ESNext --outDir dist"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "^4.20240605.0",
+        "typescript": "^5.8.3"
+    }
+}
