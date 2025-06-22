@@ -10,3 +10,6 @@ compatibility_date = "2025-06-22"
 # Jika kamu punya environment variables, bisa tambahkan di sini
 TELEGRAM_TOKEN = "7823679916:AAGPLub5GJ0UprX5Zd_eQqytfiqDurlBqmw"
 # GOOGLE_SHEET_ID = "your-sheet-id"
+
+[observability.logs]
+enabled = true
