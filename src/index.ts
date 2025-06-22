@@ -102,7 +102,7 @@ export default {
 
                 const summary = `
                 ✅ Data berhasil disimpan!
-
+                
                 📆 Tanggal: ${state.tanggal}
                 📝 Kegiatan: ${state.kegiatan}
                 📍 Status: ${state.status}
