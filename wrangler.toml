@@ -4,7 +4,7 @@ main = "dist/index.js"
 compatibility_date = "2025-06-22"
 
 [build]
-command = "npm run build"
+# command = "npm run build"
 
 [vars]
 # Jika kamu punya environment variables, bisa tambahkan di sini
