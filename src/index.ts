@@ -41,7 +41,8 @@ export default {
                 state.tanggal = new Date().toISOString().split("T")[0];
 
                 await setState(chatId, state, env);
-                await answerCallback(body.callback_query.id, `Status: ${state.status}`, env);
+                // await answerCallback(body.callback_query.id, `Status: ${state.status}`, env);
+                await reply(chatId, `Status: ${state.status}`, env);
                 return reply(chatId, "💰 Berapa jumlah pengeluaran?", env);
             }
 
@@ -90,15 +91,26 @@ export default {
                     pengeluaran: state.pengeluaran,
                 };
 
-                const res = await fetch(env.WEB_APP_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload)
-                });
+                // const res = await fetch(env.WEB_APP_URL, {
+                //     method: "POST",
+                //     headers: { "Content-Type": "application/json" },
+                //     body: JSON.stringify(payload)
+                // });
 
                 await env.TELEGRAM_STATE.delete(chatId);
 
-                return reply(chatId, res.ok ? "✅ Data berhasil disimpan. Terima kasih!" : "❌ Gagal menyimpan data ke Sheet.", env);
+                // return reply(chatId, res.ok ? "✅ Data berhasil disimpan. Terima kasih!" : "❌ Gagal menyimpan data ke Sheet.", env);
+
+                const summary = `
+                ✅ Data berhasil disimpan!
+
+                📆 Tanggal: ${state.tanggal}
+                📝 Kegiatan: ${state.kegiatan}
+                📍 Status: ${state.status}
+                💰 Pengeluaran: Rp${state.pengeluaran?.toLocaleString("id-ID")}
+                `;
+
+                return reply(chatId, summary, env);
             }
         }
 
