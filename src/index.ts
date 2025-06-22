@@ -20,7 +20,7 @@ interface UserState {
 
 export declare const TELEGRAM_STATE: KVNamespace;
 
-const TELEGRAM_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN";
+const TELEGRAM_TOKEN = "YOUR_TELEGRAM_BOT_TOKENx";
 const WEB_APP_URL = "YOUR_GOOGLE_WEB_APP_URL";
 
 export default {
