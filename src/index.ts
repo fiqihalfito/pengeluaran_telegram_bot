@@ -53,6 +53,10 @@ export default {
             const text = body.message.text.trim();
             let state = await getState(chatId, env);
 
+            if (text === "/start") {
+                return reply(chatId, "👋 Halo! Gunakan perintah /input untuk mulai mencatat pengeluaran.", env);
+            }
+
             if (text === "/input") {
                 state = { step: 1 };
                 await setState(chatId, state, env);
