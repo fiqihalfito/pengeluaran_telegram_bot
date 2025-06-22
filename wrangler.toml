@@ -1,0 +1,12 @@
+name = "pengeluaran-sheet-bot"
+#type = "javascript"  # atau "module" jika kamu menulis dalam format ESM
+main = "dist/index.js"
+compatibility_date = "2025-06-22"
+
+[build]
+command = "npm run build"
+
+[vars]
+# Jika kamu punya environment variables, bisa tambahkan di sini
+# TELEGRAM_TOKEN = "your-token"
+# GOOGLE_SHEET_ID = "your-sheet-id"
