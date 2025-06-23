@@ -1,3 +1,5 @@
+import { totalPengeluaranBulanIni } from "./module/totalPengeluaranBulanIni";
+
 export interface TelegramMessage {
     message?: {
         chat: { id: number };
@@ -18,7 +20,7 @@ interface UserState {
     pengeluaran?: number;
 }
 
-interface Env {
+export interface Env {
     TELEGRAM_TOKEN: string;
     WEB_APP_URL: string;
     TELEGRAM_STATE: KVNamespace;
@@ -60,14 +62,7 @@ export default {
             }
 
             if (text === "/lihatbulanini") {
-                const now = new Date();
-                const namaBulanTahun = now.toLocaleDateString("id-ID", {
-                    year: "numeric",
-                    month: "long",
-                });
-
-                const totalbulanini = await hitungTotalPengeluaran(env);
-                return reply(chatId, `💰 Total pengeluaran bulan ini *${namaBulanTahun}*: Rp${totalbulanini?.toLocaleString("id-ID")}`, env)
+                return totalPengeluaranBulanIni(chatId, env)
             }
 
             // ============== INPUT DATA ===============================
@@ -132,7 +127,7 @@ export default {
     },
 };
 
-async function reply(chatId: string, text: string, env: Env): Promise<Response> {
+export async function reply(chatId: string, text: string, env: Env): Promise<Response> {
     const url = `https://api.telegram.org/bot${env.TELEGRAM_TOKEN}/sendMessage`;
     await fetch(url, {
         method: "POST",
@@ -174,19 +169,5 @@ async function setState(chatId: string, state: UserState, env: Env): Promise<voi
     await env.TELEGRAM_STATE.put(chatId, JSON.stringify(state));
 }
 
-// function pack =============================================
-async function hitungTotalPengeluaran(env: Env): Promise<number> {
-    const now = new Date();
-    const sheetName = now.toISOString().slice(0, 7); // yyyy-MM
 
-    const res = await fetch(env.WEB_APP_URL, {
-        method: "POST",
-        body: JSON.stringify({ sheet: sheetName }),
-        headers: { "Content-Type": "application/json" },
-    });
-
-    if (!res.ok) throw new Error("Gagal mengambil data dari Sheet.");
-    const data: { total: number } = await res.json();
-    return data.total || 0;
-}
 
